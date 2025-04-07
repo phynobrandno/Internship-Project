@@ -59,19 +59,7 @@ export default function SignUp() {
             <Text style={Styles.orText}>------ Or Register with ------</Text>
 
             <View style={Styles.socialContainer}>   
-              <TouchableOpacity>
-                <Image 
-                  style={Styles.socialIcon} 
-                  source={require('./../../assets/images/face2.png')} 
-                />
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-                <Image 
-                  style={Styles.socialIcon} 
-                  source={require('./../../assets/images/apple.png')} 
-                />
-              </TouchableOpacity>
+              
 
               <TouchableOpacity>
                 <Image 

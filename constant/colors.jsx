@@ -7,4 +7,5 @@ export default{
     text:'#759188',
     textInput:'#B3B9C4',
     forgotpassword:'#C2C7D0',
+    headerColor:'#F5F6F7', 
 }

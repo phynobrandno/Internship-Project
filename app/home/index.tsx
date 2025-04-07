@@ -12,11 +12,15 @@ export default function LandingPage() {
 
       <Text style={styles.title}>Welcome to WeChart</Text>
       <Text style={styles.subtitle}>
-        Sign up and start exploring our amazing features.
-      </Text>
+      Shop the latest electronics at unbeatable prices.      </Text>
+      <TouchableOpacity style={styles.flexing}>
+      <TouchableOpacity style={styles.button1} onPress={() => router.push("/(tabs)/Home")}>
+        <Text style={styles.buttonText}>Continue </Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={() => router.push("/")}>
         <Text style={styles.buttonText}>Log Out</Text>
+      </TouchableOpacity>
       </TouchableOpacity>
     </View>
   );
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.text,
     textAlign: "center",
-    marginBottom: 30,
+    marginBottom: 40,
   },
   button: {
     backgroundColor: colors.primary,
@@ -57,6 +61,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
   },
+  button1: {
+    backgroundColor: colors.primary,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+    marginRight:30,
+  },
   buttonText: {
     color: colors.white,
     fontSize: 16,
@@ -66,5 +80,10 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 14,
     fontWeight: "500",
+  },
+  flexing:{
+display:"flex",
+flexDirection:'row',
+justifyContent:'space-evenly'
   },
 });

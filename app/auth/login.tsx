@@ -64,17 +64,7 @@ export default function Login() {
 
         <View style={Styles.socialContainer}>
           <TouchableOpacity>
-            <Image
-              style={Styles.socialIcon}
-              source={require('./../../assets/images/face2.png')}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Image
-              style={Styles.socialIcon}
-              source={require('./../../assets/images/apple.png')}
-            />
+            
           </TouchableOpacity>
 
           <TouchableOpacity>
