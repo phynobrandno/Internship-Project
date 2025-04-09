@@ -1,21 +1,32 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useCallback } from "react";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colors from "@/constant/colors";
-export default function CartHeader() {
+import { useNavigation } from "@react-navigation/native";
+export default function CartHeader( {isCart}) {
+  const navigation = useNavigation();
   return (
     <View
       style={{
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
         margin: 15,
         
             
       }}
     >
-      <Text
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+      {
+      isCart?( <Ionicons name={"arrow-back" }color={colors.lightGray} size={24}/>):(
+        <Text>Hi</Text>
+      )
+    }
+    </TouchableOpacity >
+             
+{ isCart && <Text
         style={{
           width: 113,
           height: 36,
@@ -25,7 +36,8 @@ export default function CartHeader() {
         }}
       >
         My Cart
-      </Text>
+      </Text>}
+      
       <View
         style={{
           width: 120,

@@ -2,11 +2,22 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "@/constant/colors";
 import { AntDesign } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+
 
 const ProductCart = ({item,handleliked}) => {
+  const route = useRouter();
   //const [isliked, setIsLiked] = React.useState(false);
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={()=>route.push({pathname:'/ProductDetails', params:{
+      courseParams:JSON.stringify(item),
+      id:item.id,
+      image:item.image,
+      title:item.title,
+      description:item.description,
+      price:item.price,
+      isliked:item.isLiked
+    }})} style={styles.container}>
       <View style={styles.container2}>
       <Image
         source={{uri: item.image}}
@@ -43,7 +54,7 @@ const ProductCart = ({item,handleliked}) => {
 
 
       
-    </View>
+    </TouchableOpacity>
     
     
   );

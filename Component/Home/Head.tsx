@@ -3,17 +3,30 @@ import React from "react";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colors from "@/constant/colors";
-export default function Head() {
+import { useNavigation } from "@react-navigation/native";
+export default function Head({isCart}) {
+    const navigation = useNavigation();
+  
   return (
     <View
       style={{
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 15,
+        marginTop:15
         
             
       }}
     >
+       <TouchableOpacity onPress={() => navigation.goBack()}>
+      {
+      isCart?( <Ionicons name={"chevron-back" }color={colors.lightGray} size={24}/>):(
+<Ionicons name={"chevron-back" }color={colors.lightGray} size={24}/>
+      )
+    }
+    </TouchableOpacity >
       <Text
         style={{
           width: 88,
