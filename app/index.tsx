@@ -21,6 +21,7 @@ export default function Index() {
       height:401,
       borderRadius: 5,
 
+    
       }}
     />
     <View style={{
