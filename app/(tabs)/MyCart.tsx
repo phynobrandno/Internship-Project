@@ -1,104 +1,71 @@
-import { View, Text,StyleSheet, TouchableOpacity, FlatList } from 'react-native'
-import React from 'react'
-import CartHeader from '@/Component/Home/CartHeader'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useContext } from 'react'
 import CartCard from '@/Component/Home/CartCard'
+import CartHeader from '@/Component/Home/CartHeader'
+import { cartcontext } from '@/cartcontext/cartcontext'
+
 const MyCart = () => {
+  const { cart } = useContext(cartcontext);
+
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
+
   return (
-    <View style={{flex:1}}>
-<CartHeader isCart={true} />
+    <View style={{ flex: 1 }}>
+      <CartHeader isCart={true} />
+      <FlatList
+        data={cart}
+        renderItem={({ item }) => <CartCard item={item} />}
+        keyExtractor={(item) => item.id.toString()}
+        ListFooterComponent={
+          <View style={styles.PriceContainer}>
+            <View style={styles.TotalContainer}>
+              <Text style={styles.TotalText}>Total</Text>
+              <Text style={styles.Price}>${total}</Text>
+            </View>
+          </View>
+        }
+        contentContainerStyle={{ paddingBottom: 100 }}
+      />
+      <TouchableOpacity style={styles.Button}>
+        <Text style={styles.ButtonText}>CHECKOUT</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-<FlatList data={[1,2,3,4,5,6,]} ListHeaderComponent={
-<>
+export default MyCart;
 
-</>
-
-} renderItem={CartCard} 
-ListFooterComponent={
-  <>
-  <View style={styles.PriceContainer}>
-
-<View style={styles.TotalContainer}>
-<Text  style={styles.TotalText}>Total</Text>
-<Text style={styles.Price}>$180</Text>
-
-</View>
-<View style={styles.shippingContainer}>
-<Text style={styles.shippingText}>Shipping</Text>
-<Text style={styles.Price}>$50</Text>
-</View>
-<View style={styles.divider}/>
-
-<View style={styles.TotalContainer}>
-<Text  style={styles.TotalText}>Grand Total</Text>
-<Text style={styles.Price}>$230</Text>
-</View>
-
-
-</View>
-  </>
-}
-showsVerticalScrollIndicator={false}
-contentContainerStyle={{paddingBottom:100}}
-
-
-/>
-
-<TouchableOpacity style={styles.Button}>
-  <Text style={styles.ButtonText}>CHECKOUT</Text>
-</TouchableOpacity>
-
-     </View>
-  )
-}
-export default MyCart
 const styles = StyleSheet.create({
-  PriceContainer:{
-    marginTop:20,
-    padding:20,
+  PriceContainer: {
+    marginTop: 20,
+    padding: 20,
   },
-  TotalContainer:{
-    flexDirection:"row",
-    justifyContent:"space-between",
-    margin:10,
-    marginBottom:0,
+  TotalContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 10,
+    marginBottom: 0,
   },
-  shippingContainer:{
-    flexDirection:"row",
-    justifyContent:"space-between",
-    margin:10,
+  TotalText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
-  TotalText:{
-    fontSize:20,
-    fontWeight:"bold",
+  Price: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#114232",
   },
-  shippingText:{
-    fontSize:20,
-    fontWeight:"bold",
+  Button: {
+    backgroundColor: "#114232",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    margin: 10,
   },
-  Price:{
-    fontSize:18,
-    fontWeight:"bold",
-    color:"#114232",
+  ButtonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#fff",
   },
-  divider:{
-    borderBottomColor:"#114232",
-    borderBottomWidth:1,
-    marginHorizontal:10,
-    marginTop:10,
-  },
-  Button:{
-    backgroundColor:"#114232",
-    height:50,
-    justifyContent:"center",
-    alignItems:"center",
-    borderRadius:10,
-    marginLeft:10,
-    marginRight:10,
-    marginBottom:30,
-  },
-  ButtonText:{
-    fontSize:18,
-    fontWeight:"bold",
-    color:"#fff",
-  },
-})
+});

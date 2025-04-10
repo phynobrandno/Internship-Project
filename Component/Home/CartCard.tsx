@@ -1,50 +1,43 @@
-import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import React, { useContext } from 'react'
 import EvilIcons from "@expo/vector-icons/EvilIcons";
-const imagrurl="https://images-na.ssl-images-amazon.com/images/I/71SUe9nkS5L.jpg"
-const cartCard = () => {
+import { cartcontext } from '@/cartcontext/cartcontext';
+
+const CartCard = ({ item }) => {
+  const { removeFromCart } = useContext(cartcontext);
+
   return (
     <View style={styles.cartCard}>
-<View style={styles.cartCardContent}>
-<Image source={{uri:imagrurl}} style={styles.CoverImage}/>
-<View style={{marginLeft:10}}>
-  <Text style={{fontSize:18,fontWeight:"bold"}}>Product Name</Text>
-  <Text style={{fontSize:16}}>$1500</Text>
-  <View style={styles.circle}>
-
-  </View>
-  </View>
-  </View>
-  <TouchableOpacity >
-    <EvilIcons name="trash" size={30} color="#114232" />
-  </TouchableOpacity >
-  
+      <View style={styles.cartCardContent}>
+        <Image source={{ uri: item.image }} style={styles.CoverImage} />
+        <View style={{ marginLeft: 10 }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.name}</Text>
+          <Text style={{ fontSize: 16 }}>${item.price}</Text>
+        </View>
       </View>
-  )
-}
+      <TouchableOpacity onPress={() => removeFromCart(item.id)}>
+        <EvilIcons name="trash" size={30} color="#114232" />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-export default cartCard
+export default CartCard;
 
 const styles = StyleSheet.create({
   cartCard: {
-  marginVertical: 10,
-  margin: 10,
-  flexDirection: "row",
-  justifyContent: "space-between",
+    marginVertical: 10,
+    margin: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   CoverImage: {
-    width: "55%",
-    height: 125,
+    width: 90,
+    height: 90,
     borderRadius: 10,
   },
-  cartCardContent:{
-flexDirection:"row",
-width:"70%",
+  cartCardContent: {
+    flexDirection: "row",
+    width: "70%",
   },
-  circle:{
-    height:32,
-    width:32,
-    borderRadius:16,
-    backgroundColor:"#114232",
-  }
-})
+});

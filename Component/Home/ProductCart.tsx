@@ -3,9 +3,12 @@ import React from "react";
 import colors from "@/constant/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-
+import { cartcontext } from "@/cartcontext/cartcontext";
+import { useContext } from "react";
 
 const ProductCart = ({item,handleliked}) => {
+  const { addToCart } = useContext(cartcontext);
+
   const route = useRouter();
   //const [isliked, setIsLiked] = React.useState(false);
   return (
@@ -27,7 +30,7 @@ const ProductCart = ({item,handleliked}) => {
       <Text style={styles.subTittle}>{item.description}</Text>
       <View style={styles.PriceContainer}>
         <Text style={styles.PriceText}>${item.price}</Text>
-        <Text style={styles.PriceCart}>+</Text>
+        <Text style={styles.PriceCart} onPress={() => addToCart(item)}>+</Text>
       </View>
       <TouchableOpacity onPress={() => {handleliked(item)}} style={styles.LikeContaner}>
       {item?.isLiked ? (

@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View,Image,SafeAreaView, Touchable, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React,{ useContext } from 'react'
 import { useLocalSearchParams } from 'expo-router'
 import Head from '@/Component/Home/Head';
 import colors from '@/constant/colors';
+import { cartcontext } from '@/cartcontext/cartcontext'; // ✅ import your context
+
 import { useRoute } from '@react-navigation/native';
 const colored=[
   '#CC6CE7',
@@ -19,6 +21,7 @@ const productdetails = () => {
   const {courseParams}=useLocalSearchParams();
   const course=JSON.parse(courseParams);
   const [selectedColor, setSelectedColor] = React.useState(null);
+  
   
   return (
     <SafeAreaView style={{backgroundColor:colors.white, width: "100%",
@@ -54,7 +57,7 @@ const productdetails = () => {
 </View>
 
 <TouchableOpacity style={styles.ButtonContainer}>
-  <Text style={styles.ButtonText}>
+  <Text  style={styles.ButtonText}>
     ADD TO CART
   </Text>
 </TouchableOpacity>
