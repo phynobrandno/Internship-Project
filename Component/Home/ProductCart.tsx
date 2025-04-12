@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
   },
   container2: {
     width: 153,
