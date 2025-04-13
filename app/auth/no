@@ -1,0 +1,41 @@
+ <View style={styles.containerText}> 
+      <Text style={styles.profileText}>
+        Profile
+      </Text>
+    </View>
+    <View style={styles.containerProfile}>
+    <View style={styles.profileView}>
+    <View style={styles.profileViewTwo}>
+      <View >
+        <Image source={require("@/assets/images/profile.png")} style={{width: 120, height: 120, borderRadius: 100}}/>
+        <TouchableOpacity onPress={()=>Alert.alert("Edith Profile")} >
+        <Image source={require("@/assets/images/edit.png")} style={{position:"absolute", bottom: -8, right: 0, width:30,height:30}}/>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+    </View>
+
+    <View style={{marginTop: 10, alignContent:"center", justifyContent:"center", }}>
+      <Text style={styles.information1}>GodWILL CHINEMEREM OKORIE</Text>
+      <Text style={styles.information}>godwillchinemere44@gmail.com</Text>
+      <Text style={styles.information}>+23408142591169</Text>
+    </View>
+
+     </View>
+    <FlatList
+      data={Data}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => (
+        <View style={styles.itemContainer}>
+          <View style={{flexDirection:"row",width:"90%"}}>
+          <Image source={item.iconeLeft} style={styles.icon} />
+          <Text style={styles.label}>{item.label}</Text>
+          </View>
+         <TouchableOpacity style={{flexDirection:"row", alignItems:"center"}}>
+          <Image source={item.next} style={{width: 20, height: 20, }}/>
+          </TouchableOpacity>
+        </View>
+      )}
+    
+      />

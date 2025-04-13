@@ -8,4 +8,5 @@ export default{
     textInput:'#B3B9C4',
     forgotpassword:'#C2C7D0',
     headerColor:'#F5F6F7', 
+    rounprofilecolor:'#FFDAB9',
 }

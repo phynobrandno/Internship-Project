@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import CartCard from '@/Component/Home/CartCard'
 import CartHeader from '@/Component/Home/CartHeader'
 import { cartcontext } from '@/cartcontext/cartcontext'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const MyCart = () => {
   const { cart } = useContext(cartcontext);
@@ -10,7 +11,7 @@ const MyCart = () => {
   const total = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <CartHeader isCart={true} />
       <FlatList
         data={cart}
@@ -29,7 +30,7 @@ const MyCart = () => {
       <TouchableOpacity style={styles.Button}>
         <Text style={styles.ButtonText}>CHECKOUT</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
